@@ -3,8 +3,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 //import firebase from './firebase';
 import HomePage from './components/HomePage';
+import Settings from './components/Settings';
 import CoursesPage from './components/CoursesPage';
 import CourseDetailsPage from './components/CourseDetailsPage';
+//import Carousel from 'react-native-snap-carousel';
+import { View } from 'react-native';
+import PageHeader from './components/HomePageHeader';
+//import { ViewPropTypes } from 'react-native';
 
 /*// Write data to the database
 firebase.database().ref('users/1').set({
@@ -32,11 +37,15 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      
-        <Stack.Screen
+        <Stack.Screen style={styles.Heading}
           name="Home"
           component={HomePage}
-          options={{ title: 'IELTS Learning App' }}
+          options={{ title: 'GoIELTS' }}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={{ title: 'Settings' }}
         />
         <Stack.Screen
           name="Courses"
@@ -44,7 +53,7 @@ const App = () => {
           options={{ title: 'CoursesPage' }}
         />
         <Stack.Screen
-          name="CourseDetails"
+          name="CourseDetailsPage"
           component={CourseDetailsPage}
           options={({ route }) => ({ title: route.params.courseName })}
         />
@@ -53,4 +62,12 @@ const App = () => {
   );
 };
 
+const styles = styles.create({
+  Heading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 16,
+  },
+});
 export default App;

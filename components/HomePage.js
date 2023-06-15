@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import CoursesPage from './CoursesPage';
 
 /*const HomePage = ({ navigation }) => {
   const navigateToCourses = () => {

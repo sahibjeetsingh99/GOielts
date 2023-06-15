@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './components/HomePage';
 import CoursesPage from './components/CoursesPage';
 import CourseDetailsPage from './components/CourseDetailsPage';
+import StartPage from './components/StartPage';
+import SignupPage from './components/SignupPage';
 
 /*// Write data to the database
 firebase.database().ref('users/1').set({
@@ -27,16 +29,24 @@ firebase
 
 
 const Stack = createStackNavigator();
-
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      
+        <Stack.Screen
+          name="Start"
+          component={StartPage}
+          options={{ title: 'GOIELTS Learning App' }}
+        />
         <Stack.Screen
           name="Home"
           component={HomePage}
-          options={{ title: 'IELTS Learning App' }}
+          options={{ title: 'Home Page' }}
+        />
+        <Stack.Screen
+          name="Signup"
+          component={SignupPage}
+          options={{ title: 'Signup Page' }}
         />
         <Stack.Screen
           name="Courses"

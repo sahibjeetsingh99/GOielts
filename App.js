@@ -10,6 +10,8 @@ import CourseDetailsPage from './components/CourseDetailsPage';
 import { View } from 'react-native';
 import PageHeader from './components/HomePageHeader';
 //import { ViewPropTypes } from 'react-native';
+import StartPage from './components/StartPage';
+import SignupPage from './components/SignupPage';
 
 /*// Write data to the database
 firebase.database().ref('users/1').set({
@@ -32,15 +34,25 @@ firebase
 
 
 const Stack = createStackNavigator();
-
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Start"
+          component={StartPage}
+          options={{ title: 'GOIELTS Learning App' }}
+        />
+        <Stack.Screen
         <Stack.Screen style={styles.Heading}
           name="Home"
           component={HomePage}
-          options={{ title: 'GoIELTS' }}
+          options={{ title: 'Home Page' }}
+        />
+        <Stack.Screen
+          name="Signup"
+          component={SignupPage}
+          options={{ title: 'Signup Page' }}
         />
         <Stack.Screen
           name="Settings"

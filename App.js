@@ -8,7 +8,7 @@ import CourseDetailsPage from './components/CourseDetailsPage';
 import { StyleSheet } from 'react-native';
 import StartPage from './components/StartPage';
 import SignupPage from './components/SignupPage';
-
+//testing implemented
 
 const Stack = createStackNavigator();
 const App = () => {

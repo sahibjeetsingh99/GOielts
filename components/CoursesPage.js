@@ -8,7 +8,7 @@ const CoursesPage = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Choose a Course</Text>
+      <Text style={styles.title}>IELTS Preparation</Text>
       <TouchableOpacity
         style={styles.courseButton}
         onPress={() => navigateToCourseDetails('IELTS Reading')}

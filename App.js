@@ -1,20 +1,61 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomePage from './components/HomePage';
+import Settings from './components/Settings';
+import CoursesPage from './components/CoursesPage';
+import CourseDetailsPage from './components/CourseDetailsPage';
+import { StyleSheet } from 'react-native';
+import StartPage from './components/StartPage';
+import SignupPage from './components/SignupPage';
+//testing implemented
 
-export default function App() {
+const Stack = createStackNavigator();
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Start"
+          component={StartPage}
+          options={{ title: 'GOIELTS Learning App' }}
+        />
+        <Stack.Screen style={styles.Heading}
+          name="Home"
+          component={HomePage}
+          options={{ title: 'Home Page' }}
+        />
+        <Stack.Screen
+          name="Signup"
+          component={SignupPage}
+          options={{ title: 'Signup Page' }}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={{ title: 'Settings' }}
+        />
+        <Stack.Screen
+          name="Courses"
+          component={CoursesPage}
+          options={{ title: 'CoursesPage' }}
+        />
+        <Stack.Screen
+          name="CourseDetailsPage"
+          component={CourseDetailsPage}
+          options={({ route }) => ({ title: route.params.courseName })}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
+  Heading: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 16,
   },
 });
+export default App;

@@ -8,6 +8,8 @@ import CourseDetailsPage from './components/CourseDetailsPage';
 import { StyleSheet } from 'react-native';
 import StartPage from './components/StartPage';
 import SignupPage from './components/SignupPage';
+import NativeSpeaker from './components/NativeSpeaker';
+import SpeakingSession from './components/SpeakingSession';
 
 
 const Stack = createStackNavigator();
@@ -44,6 +46,16 @@ const App = () => {
           name="CourseDetailsPage"
           component={CourseDetailsPage}
           options={({ route }) => ({ title: route.params.courseName })}
+        />
+        <Stack.Screen
+          name="NativeSpeaker"
+          component={NativeSpeaker}
+          options={{ title: 'Native Speaker Section' }}
+        />
+        <Stack.Screen
+          name="Speaking"
+          component={SpeakingSession}
+          options={{ title: 'Session is active' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

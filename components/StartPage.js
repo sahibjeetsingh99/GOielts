@@ -50,31 +50,7 @@ const StartPage = ({ navigation }) => {
     // Navigate to SignupPage
     navigation.navigate("Signup");
   };
-  // const handleGoogleSignIn = async () => {
-  //   try {
-  //     await GoogleSignin.hasPlayServices();
-  //     const { idToken } = await GoogleSignin.signIn();
 
-  //     const credential = GoogleAuthProvider.credential(idToken);
-  //     signInWithCredential(auth, credential)
-  //       .then((result) => {
-  //         navigation.navigate('Home');
-  //       })
-  //       .catch((error) => {
-  //         console.log('Google sign-in error:', error);
-  //         alert('Failed to sign in with Google.');
-  //       });
-  //   } catch (error) {
-  //     console.log('Google sign-in error:', error);
-  //     if (error.code === undefined) {
-  //       // Fallback behavior for web environment
-  //       alert('Google Sign-In is not supported on the web.');
-  //     } else {
-  //       console.log('Google sign-in error:', error);
-  //       alert('Failed to sign in with Google.');
-  //     }
-  //   }
-  // };
   const togglePasswordVisibility = () => {
     setPasswordVisible(!isPasswordVisible);
   };
@@ -123,17 +99,7 @@ const StartPage = ({ navigation }) => {
         <Text style={styles.text}>or</Text>
         <View style={styles.line} />
       </View>
-      {/* <TouchableOpacity
-        style={styles.googleButton}
-        onPress={handleGoogleSignIn}
-      >
-        <Image
-          source={google_logo}
-          style={styles.googleLogo}
-        />
-        <Text style={styles.buttonText}>Sign in with Google</Text>
-      </TouchableOpacity> */}
-      <Text style={styles.text}>Google sign in button</Text>
+  
       <View style={styles.container2}>
         <Text style={styles.text1}>Don't have an account?</Text>
         <TouchableOpacity onPress={handleSignup} style={styles.linkButton}>

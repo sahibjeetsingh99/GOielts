@@ -52,7 +52,8 @@ import CoursesPage from './CoursesPage';
           <Icon name="home" size={20} color="#fff" style={styles.footerIcon} />
             <Text style={styles.footerButtonText}>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.footerButton}>
+          <TouchableOpacity style={styles.footerButton}
+          onPress={() => navigation.navigate('NativeSpeaker')}>
           <Icon name="diamond" size={20} color="#fff" style={styles.footerIcon} />
             <Text style={styles.footerButtonText}>Premium</Text>
           </TouchableOpacity>

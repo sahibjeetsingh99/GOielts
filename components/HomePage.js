@@ -4,11 +4,6 @@ import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Image
 import CoursesPage from './CoursesPage';
 import Reading from './Reading';
 
-/*const HomePage = ({ navigation }) => {
-  const navigateToCourses = () => {
-    navigation.navigate(CoursesPage);
-  };*/
-
   const HomePage = ({ navigation }) => {
     const navigateToCourseDetails = (courseName) => {
       navigation.navigate('CourseDetailsPage', { courseName });
@@ -107,7 +102,8 @@ const data = [
           <Icon name="home" size={20} color="#fff" style={styles.footerIcon} />
             <Text style={styles.footerButtonText}>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.footerButton}>
+          <TouchableOpacity style={styles.footerButton}
+          onPress={() => navigation.navigate('NativeSpeaker')}>
           <Icon name="diamond" size={20} color="#fff" style={styles.footerIcon} />
             <Text style={styles.footerButtonText}>Premium</Text>
           </TouchableOpacity>
@@ -116,6 +112,12 @@ const data = [
           >
           <Icon name="gear" size={20} color="#fff" style={styles.footerIcon} />
             <Text style={styles.footerButtonText}>Settings</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.footerButton}
+          onPress={() => navigation.navigate('LeaderBoard')}
+          >
+          <Icon name="trophy" size={20} color="#fff" style={styles.footerIcon} />
+            <Text style={styles.footerButtonText}>LeaderBoard</Text>
           </TouchableOpacity>
         </View>
     </View>
@@ -200,7 +202,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#9768D9',
     height: 70,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     position: 'absolute',
     bottom: 20,
     left: 0,
@@ -216,6 +218,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
+    textAlign: 'center',
   },
   footerIcon:{
     marginRight: 10,

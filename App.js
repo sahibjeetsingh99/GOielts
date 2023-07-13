@@ -8,6 +8,7 @@ import CourseDetailsPage from './components/CourseDetailsPage';
 import { StyleSheet } from 'react-native';
 import StartPage from './components/StartPage';
 import SignupPage from './components/SignupPage';
+import LeaderboardPage from './components/LeaderBoard';
 //testing implemented
 
 const Stack = createStackNavigator();
@@ -34,6 +35,11 @@ const App = () => {
           name="Settings"
           component={Settings}
           options={{ title: 'Settings' }}
+        />
+        <Stack.Screen
+          name="LeaderBoard"
+          component={LeaderboardPage}
+          options={{ title: 'LeaderBoard' }}
         />
         <Stack.Screen
           name="Courses"

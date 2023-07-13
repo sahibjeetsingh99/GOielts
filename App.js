@@ -12,6 +12,7 @@ import TutorLogin from "./components/TutorLogin";
 import TutorHome from "./components/TutorHome";
 import TutorSpeaking from "./components/TutorSpeaking";
 import NativeSpeaker from "./components/NativeSpeaker";
+import LeaderboardPage from './components/LeaderBoard';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -48,6 +49,11 @@ const App = () => {
           name="Settings"
           component={Settings}
           options={{ title: "Settings" }}
+        />
+        <Stack.Screen
+          name="LeaderBoard"
+          component={LeaderboardPage}
+          options={{ title: 'LeaderBoard' }}
         />
         <Stack.Screen
           name="Courses"

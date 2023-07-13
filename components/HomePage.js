@@ -4,51 +4,11 @@ import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Image
 import CoursesPage from './CoursesPage';
 
 
-/*const HomePage = ({ navigation }) => {
-  const navigateToCourses = () => {
-    navigation.navigate(CoursesPage);
-  };*/
-
   const HomePage = ({ navigation }) => {
     const navigateToCourseDetails = (courseName) => {
       navigation.navigate('CourseDetailsPage', { courseName });
     };
   
- /* const SLIDER_WIDTH = Dimensions.get('window').width + 30;
-  const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
-
-const data = [
-  {
-    id: 1,
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_w7LFjyOofep4l821ygej8p55mv2V7ia_pA&usqp=CAU',
-  },
-  {
-    id: 2,
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBMR28TiQXUO9e-LIO4AwzbcwxNMJUZeSX_w&usqp=CAU',
-  },
-  {
-    id: 3,
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRib_dIjPE66Zj9SRF2eC6plsnCMATsAOetxw&usqp=CAU',
-  },
-];*/
-
-/*const renderItem = ({item}) => {
-  return (
-    <View
-      style={{
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 20,
-        alignItems: 'center',
-        backgroundColor: 'white',
-      }}>
-      <Image source={{uri: item.url}}  style={{width: 200, height: 100}} />
-      <Text style={{marginVertical: 10, fontSize: 20, fontWeight: 'bold'}}>
-        {item.name}
-      </Text>
-    </View>
-  );
-};*/
 
   return (
     
@@ -102,6 +62,12 @@ const data = [
           >
           <Icon name="gear" size={20} color="#fff" style={styles.footerIcon} />
             <Text style={styles.footerButtonText}>Settings</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.footerButton}
+          onPress={() => navigation.navigate('LeaderBoard')}
+          >
+          <Icon name="trophy" size={20} color="#fff" style={styles.footerIcon} />
+            <Text style={styles.footerButtonText}>LeaderBoard</Text>
           </TouchableOpacity>
         </View>
     </View>
@@ -186,7 +152,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#9768D9',
     height: 70,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     position: 'absolute',
     bottom: 20,
     left: 0,
@@ -202,6 +168,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
+    textAlign: 'center',
   },
   footerIcon:{
     marginRight: 10,

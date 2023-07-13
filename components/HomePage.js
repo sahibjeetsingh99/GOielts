@@ -2,16 +2,61 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
 import CoursesPage from './CoursesPage';
-
+import Reading from './Reading';
 
   const HomePage = ({ navigation }) => {
     const navigateToCourseDetails = (courseName) => {
       navigation.navigate('CourseDetailsPage', { courseName });
     };
   
+    const navigateToReading = (courseName) => {
+      navigation.navigate('Reading', { courseName });
+    };
+  
+    const navigateToListening = (courseName) => {
+      navigation.navigate('Listening', { courseName });
+    };
+  
+    const navigateToWriting = (courseName) => {
+      navigation.navigate('Writing', { courseName });
+    };
+ /* const SLIDER_WIDTH = Dimensions.get('window').width + 30;
+  const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
+
+const data = [
+  {
+    id: 1,
+    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_w7LFjyOofep4l821ygej8p55mv2V7ia_pA&usqp=CAU',
+  },
+  {
+    id: 2,
+    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBMR28TiQXUO9e-LIO4AwzbcwxNMJUZeSX_w&usqp=CAU',
+  },
+  {
+    id: 3,
+    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRib_dIjPE66Zj9SRF2eC6plsnCMATsAOetxw&usqp=CAU',
+  },
+];*/
+
+/*const renderItem = ({item}) => {
+  return (
+    <View
+      style={{
+        borderWidth: 1,
+        padding: 0,
+        borderRadius: 20,
+        alignItems: 'center',
+        backgroundColor: 'white',
+      }}>
+      <Image source={{uri: item.url}}  style={{width: 200, height: 100}} />
+      <Text style={{marginVertical: 10, fontSize: 20, fontWeight: 'bold'}}>
+        {item.name}
+      </Text>
+    </View>
+  );
+};*/
 
   return (
-    
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerTitle}>Prepare & take tests!</Text>
@@ -20,28 +65,33 @@ import CoursesPage from './CoursesPage';
         <Text style={styles.title}>Choose your section</Text>
         <TouchableOpacity
           style={styles.courseButton1}
-          onPress={() => navigateToCourseDetails('IELTS Reading')}
+          onPress={() => navigateToReading('IELTS Reading')}
         >
           <Icon name="book" size={20} color="#fff" style={styles.icon} />
             <Text style={styles.buttonText}>Reading</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.courseButton2}
-          onPress={() => navigateToCourseDetails('IELTS Listening')}
+          onPress={() => navigateToListening('IELTS Listening')}
         >
           <Icon name="headphones" size={20} color="#fff" style={styles.icon} />
           <Text style={styles.buttonText}>Listening</Text>
         </TouchableOpacity>
+
+
         <TouchableOpacity
           style={styles.courseButton3}
-          onPress={() => navigateToCourseDetails('IELTS Writing')}
+          onPress={() => navigateToWriting('IELTS Writing')}
         >
           <Icon name="pencil" size={20} color="#fff" style={styles.icon} />
           <Text style={styles.buttonText}>Writing</Text>
         </TouchableOpacity>
+
+        
         <TouchableOpacity
           style={styles.courseButton4}
-          onPress={() => navigateToCourseDetails('IELTS Speaking')}
+          onPress={() => navigateToSpeaking('IELTS Speaking')}
         >
           <Icon name="user" size={20} color="#fff" style={styles.icon} />
           <Text style={styles.buttonText}>Speaking</Text>

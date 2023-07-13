@@ -13,6 +13,10 @@ import TutorHome from "./components/TutorHome";
 import TutorSpeaking from "./components/TutorSpeaking";
 import NativeSpeaker from "./components/NativeSpeaker";
 import LeaderboardPage from './components/LeaderBoard';
+import Reading from './components/Reading';
+import Listening from './components/Listening';
+import Writing from './components/Writing';
+import SectionContentScreen from './components/SectionContentScreen';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -65,6 +69,30 @@ const App = () => {
           component={CourseDetailsPage}
           options={({ route }) => ({ title: route.params.courseName })}
         />
+
+        <Stack.Screen
+          name="Reading"
+          component={Reading}
+          options={({ route }) => ({ title: route.params.courseName })}
+        />
+
+        <Stack.Screen
+          name="Listening"
+          component={Listening}
+          options={({ route }) => ({ title: route.params.courseName })}
+        />
+
+        <Stack.Screen
+          name="Writing"
+          component={Writing}
+          options={({ route }) => ({ title: route.params.courseName })}
+        />
+
+        <Stack.Screen
+          name="SectionContentScreen"
+          component={SectionContentScreen}
+          //options={{ title: 'Section Content' }}        />
+          options={({ route }) => ({ title: 'Reading Passage' })} />
         <Stack.Screen
           name="NativeSpeaker"
           component={NativeSpeaker}
@@ -89,3 +117,4 @@ const styles = StyleSheet.create({
   },
 });
 export default App;
+

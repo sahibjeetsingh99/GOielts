@@ -1,23 +1,35 @@
-// Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs 
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
+import { getDatabase ,ref, set } from 'firebase/database';
+import {getFirestore} from 'firebase/firestore'
+//import firebase from 'firebase/app';
+//import 'firebase/firestore';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v9.22.2 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyA6LaXPq9AjINtew6zpIDjtJWnjAw6o82U",
-  authDomain: "goielts-f971d.firebaseapp.com",
-  projectId: "goielts-f971d",
-  storageBucket: "goielts-f971d.appspot.com",
-  messagingSenderId: "157569705591",
-  appId: "1:157569705591:web:951fef063b7712c22d4872",
-  measurementId: "G-JZ7KGLZYDD"
+
+  apiKey: "AIzaSyBr7vzz3cOG_nERnr_MWP-fACtx3EjpMbA",
+  authDomain: "goielts-de65a.firebaseapp.com",
+  databaseURL: "https://goielts-de65a-default-rtdb.firebaseio.com",
+  projectId: "goielts-de65a",
+  storageBucket: "goielts-de65a.appspot.com",
+  messagingSenderId: "569148549935",
+  appId: "1:569148549935:web:ceb3c9b4eb4421d2ec0fda",
+  measurementId: "G-NB9Z4VNGCF"
 };
 
-// Initialize Firebase
+ //firebase.initializeApp(firebaseConfig)
+
+  // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
+const db = getFirestore(app);
+//const db = firebase.firestore();
 
-export { app, auth, database };
+
+
+//export { app, auth, database,db,firebase };

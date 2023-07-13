@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
 import CoursesPage from './CoursesPage';
-
+import Reading from './Reading';
 
 /*const HomePage = ({ navigation }) => {
   const navigateToCourses = () => {
@@ -14,6 +14,17 @@ import CoursesPage from './CoursesPage';
       navigation.navigate('CourseDetailsPage', { courseName });
     };
   
+    const navigateToReading = (courseName) => {
+      navigation.navigate('Reading', { courseName });
+    };
+  
+    const navigateToListening = (courseName) => {
+      navigation.navigate('Listening', { courseName });
+    };
+  
+    const navigateToWriting = (courseName) => {
+      navigation.navigate('Writing', { courseName });
+    };
  /* const SLIDER_WIDTH = Dimensions.get('window').width + 30;
   const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 
@@ -51,7 +62,6 @@ const data = [
 };*/
 
   return (
-    
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerTitle}>Prepare & take tests!</Text>
@@ -60,28 +70,33 @@ const data = [
         <Text style={styles.title}>Choose your section</Text>
         <TouchableOpacity
           style={styles.courseButton1}
-          onPress={() => navigateToCourseDetails('IELTS Reading')}
+          onPress={() => navigateToReading('IELTS Reading')}
         >
           <Icon name="book" size={20} color="#fff" style={styles.icon} />
             <Text style={styles.buttonText}>Reading</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.courseButton2}
-          onPress={() => navigateToCourseDetails('IELTS Listening')}
+          onPress={() => navigateToListening('IELTS Listening')}
         >
           <Icon name="headphones" size={20} color="#fff" style={styles.icon} />
           <Text style={styles.buttonText}>Listening</Text>
         </TouchableOpacity>
+
+
         <TouchableOpacity
           style={styles.courseButton3}
-          onPress={() => navigateToCourseDetails('IELTS Writing')}
+          onPress={() => navigateToWriting('IELTS Writing')}
         >
           <Icon name="pencil" size={20} color="#fff" style={styles.icon} />
           <Text style={styles.buttonText}>Writing</Text>
         </TouchableOpacity>
+
+        
         <TouchableOpacity
           style={styles.courseButton4}
-          onPress={() => navigateToCourseDetails('IELTS Speaking')}
+          onPress={() => navigateToSpeaking('IELTS Speaking')}
         >
           <Icon name="user" size={20} color="#fff" style={styles.icon} />
           <Text style={styles.buttonText}>Speaking</Text>

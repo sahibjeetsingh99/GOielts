@@ -8,6 +8,10 @@ import CourseDetailsPage from './components/CourseDetailsPage';
 import { StyleSheet } from 'react-native';
 import StartPage from './components/StartPage';
 import SignupPage from './components/SignupPage';
+import Reading from './components/Reading';
+import Listening from './components/Listening';
+import Writing from './components/Writing';
+import SectionContentScreen from './components/SectionContentScreen';
 //testing implemented
 
 const Stack = createStackNavigator();
@@ -45,6 +49,30 @@ const App = () => {
           component={CourseDetailsPage}
           options={({ route }) => ({ title: route.params.courseName })}
         />
+
+        <Stack.Screen
+          name="Reading"
+          component={Reading}
+          options={({ route }) => ({ title: route.params.courseName })}
+        />
+
+        <Stack.Screen
+          name="Listening"
+          component={Listening}
+          options={({ route }) => ({ title: route.params.courseName })}
+        />
+
+        <Stack.Screen
+          name="Writing"
+          component={Writing}
+          options={({ route }) => ({ title: route.params.courseName })}
+        />
+
+        <Stack.Screen
+          name="SectionContentScreen"
+          component={SectionContentScreen}
+          //options={{ title: 'Section Content' }}        />
+          options={({ route }) => ({ title: 'Reading Passage' })} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -59,3 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 export default App;
+

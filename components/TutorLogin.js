@@ -112,9 +112,6 @@ const TutorLogin = ({ navigation }) => {
       <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <View style={styles.lineContainer}>
-      <View style={styles.line} />
-      <Text style={styles.text}>or</Text>
-      <View style={styles.line} />
       </View>
       {/* <TouchableOpacity
         style={styles.googleButton}
@@ -126,7 +123,6 @@ const TutorLogin = ({ navigation }) => {
         />
         <Text style={styles.buttonText}>Sign in with Google</Text>
       </TouchableOpacity> */}
-      <Text style={styles.text}>Google sign in button</Text>
       <View style={styles.container2}>
       </View>
     </View>

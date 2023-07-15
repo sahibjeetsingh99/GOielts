@@ -32,4 +32,4 @@ const db = getFirestore(app);
 
 
 
-//export { app, auth, database,db,firebase };
+export { app, auth, database,db,firebase };

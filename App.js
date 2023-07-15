@@ -3,8 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomePage from "./components/HomePage";
 import Settings from "./components/Settings";
-import CoursesPage from "./components/CoursesPage";
-import CourseDetailsPage from "./components/CourseDetailsPage";
 import { StyleSheet } from "react-native";
 import StartPage from "./components/StartPage";
 import SignupPage from "./components/SignupPage";
@@ -17,6 +15,7 @@ import Reading from './components/Reading';
 import Listening from './components/Listening';
 import Writing from './components/Writing';
 import SectionContentScreen from './components/SectionContentScreen';
+import Premium from './components/Premium';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -59,16 +58,6 @@ const App = () => {
           component={LeaderboardPage}
           options={{ title: 'LeaderBoard' }}
         />
-        <Stack.Screen
-          name="Courses"
-          component={CoursesPage}
-          options={{ title: "CoursesPage" }}
-        />
-        <Stack.Screen
-          name="CourseDetailsPage"
-          component={CourseDetailsPage}
-          options={({ route }) => ({ title: route.params.courseName })}
-        />
 
         <Stack.Screen
           name="Reading"
@@ -102,6 +91,11 @@ const App = () => {
           name="TutorSpeaking"
           component={TutorSpeaking}
           options={{ title: "Speaking Session" }}
+        />
+             <Stack.Screen
+          name="PremiumPage"
+          component={Premium}
+          options={{ title: "Premium" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

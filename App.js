@@ -13,6 +13,7 @@ import TutorHome from "./components/TutorHome";
 import TutorSpeaking from "./components/TutorSpeaking";
 import NativeSpeaker from "./components/NativeSpeaker";
 import LeaderboardPage from './components/LeaderBoard';
+import Premium from './components/Premium';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -74,6 +75,11 @@ const App = () => {
           name="TutorSpeaking"
           component={TutorSpeaking}
           options={{ title: "Speaking Session" }}
+        />
+             <Stack.Screen
+          name="PremiumPage"
+          component={Premium}
+          options={{ title: "Premium" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

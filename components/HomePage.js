@@ -1,7 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
-import CoursesPage from './CoursesPage';
 
 
   const HomePage = ({ navigation }) => {
@@ -53,7 +52,7 @@ import CoursesPage from './CoursesPage';
             <Text style={styles.footerButtonText}>Home</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.footerButton}
-          onPress={() => navigation.navigate('NativeSpeaker')}>
+          onPress={() => navigation.navigate('PremiumPage')}>
           <Icon name="diamond" size={20} color="#fff" style={styles.footerIcon} />
             <Text style={styles.footerButtonText}>Premium</Text>
           </TouchableOpacity>

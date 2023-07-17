@@ -9,6 +9,7 @@ import {
   Image,
   Switch,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const SECTIONS = [
@@ -115,6 +116,11 @@ const SECTIONS = [
 ];
 
 export default function Example() {
+  const navigation = useNavigation();
+
+  const handleLogout = () => {
+    navigation.navigate('Start');
+  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -169,12 +175,20 @@ export default function Example() {
 
                     {type === 'boolean' && <Switch value={value} />}
 
-                    {type === 'link' && (
+                    {type === 'link' && (<TouchableOpacity
+                        onPress={() => {
+                          // handle onPress
+                          if (label === 'Logout') {
+                            handleLogout();
+                          }
+                        }}
+                      >
                       <FeatherIcon
                         color="#0c0c0c"
                         name="chevron-right"
                         size={22}
                       />
+                      </TouchableOpacity>
                     )}
                   </View>
                 </TouchableOpacity>

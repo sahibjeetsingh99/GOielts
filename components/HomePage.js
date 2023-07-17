@@ -96,6 +96,13 @@ const data = [
           <Icon name="user" size={20} color="#fff" style={styles.icon} />
           <Text style={styles.buttonText}>Speaking</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.courseButton2}
+          onPress={() => navigation.navigate('NativeSpeaker')}
+        >
+          <Icon name="headphones" size={20} color="#fff" style={styles.icon} />
+          <Text style={styles.buttonText}>Premium Speaking</Text>
+        </TouchableOpacity>
         </ScrollView>
         <View style={styles.footerContainer}>
           <TouchableOpacity style={styles.footerButton}>

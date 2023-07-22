@@ -23,7 +23,7 @@ const CardSlider = () => {
   };
 
   const carouselData = [
-    {id: 1, duration: 'Longlife', price: '$6.99', title: 'Best Choice'},
+    {id: 1, duration: 'Longlife', price: '$15.99', title: 'Best Choice'},
     {id: 2, duration: 'Monthly', price: '$4.49', title: 'Efficiency test'},
     {id: 3, duration: 'Weekly', price: '$1.99', title: 'Efficiency test'},
     {id: 4, duration: 'Yearly', price: '$8.49', title: 'Conquer IELTS'},

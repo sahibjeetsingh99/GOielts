@@ -158,6 +158,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: 'lightgrey',
     padding: 30,
+    minHeight: 770,
     margin: 0,
     borderRadius: 10
   },

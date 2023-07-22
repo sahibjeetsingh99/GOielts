@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -78,7 +78,7 @@ if (!firebase.apps.length) {
 
  
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}></View>
 <View style={styles.practiceTestContainer}>
       <Text style={styles.practiceTestTitle}>Practice Test 1</Text>
@@ -90,7 +90,26 @@ if (!firebase.apps.length) {
       >
         <Text style={styles.sectionName}>{section.name}</Text>
       </TouchableOpacity>
+      
     ))}
+    <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 3</Text>
+      </TouchableOpacity>
 </View>
 
 <View style={styles.practiceTestContainer}>
@@ -104,6 +123,24 @@ if (!firebase.apps.length) {
         <Text style={styles.sectionName}>{section.name}</Text>
       </TouchableOpacity>
     ))}
+     <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 3</Text>
+      </TouchableOpacity>
   </View>
   <View style={styles.practiceTestContainer}>
   <Text style={styles.practiceTestTitle}>Practice Test 3</Text>
@@ -116,6 +153,24 @@ if (!firebase.apps.length) {
         <Text style={styles.sectionName}>{section.name}</Text>
       </TouchableOpacity>
     ))}
+     <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 3</Text>
+      </TouchableOpacity>
 </View>
 
  {/* Additional locked practice test */}
@@ -130,7 +185,7 @@ if (!firebase.apps.length) {
         </TouchableOpacity>
 
 
-    </View>
+    </ScrollView>
   ); 
 };
 
@@ -139,7 +194,8 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'flex-start',
-      padding: 16,
+      padding: 5,
+      minHeight: 1000,
       backgroundColor: 'white',
     },
     headerContainer: {
@@ -173,7 +229,7 @@ const styles = StyleSheet.create({
       marginRight: 8,
     },
     practiceTestContainer: {
-      width:'40%',
+      width:'80%',
       marginBottom: 16,
       borderWidth: 1,
       backgroundColor: '#9768D9',

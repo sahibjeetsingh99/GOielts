@@ -10,12 +10,14 @@ import TutorLogin from "./components/TutorLogin";
 import TutorHome from "./components/TutorHome";
 import TutorSpeaking from "./components/TutorSpeaking";
 import NativeSpeaker from "./components/NativeSpeaker";
-import LeaderboardPage from './components/LeaderBoard';
-import Reading from './components/Reading';
-import Listening from './components/Listening';
-import Writing from './components/Writing';
-import SectionContentScreen from './components/SectionContentScreen';
-import Premium from './components/Premium';
+import LeaderboardPage from "./components/LeaderBoard";
+import Reading from "./components/Reading";
+import Listening from "./components/Listening";
+import Writing from "./components/Writing";
+import SectionContentScreen from "./components/SectionContentScreen";
+import Premium from "./components/Premium";
+import SampleTest from "./components/SampleTest";
+import About from "./components/About";
 import WritingData from './components/WritingData';
 import Speaking from './components/Speaking';
 import SpeakingData from './components/SpeakingData';
@@ -61,7 +63,7 @@ const App = () => {
         <Stack.Screen
           name="LeaderBoard"
           component={LeaderboardPage}
-          options={{ title: 'LeaderBoard' }}
+          options={{ title: "LeaderBoard" }}
         />
         
 
@@ -92,7 +94,8 @@ const App = () => {
         <Stack.Screen
           name="SectionContentScreen"
           component={SectionContentScreen}
-          options={({ route }) => ({ title: 'Reading Passage' })} />
+          options={({ route }) => ({ title: "Reading Passage" })}
+        />
 
          <Stack.Screen
           name="WritingData"
@@ -114,15 +117,25 @@ const App = () => {
           component={NativeSpeaker}
           options={{ title: "Native Speaker Section" }}
         />
-              <Stack.Screen
+        <Stack.Screen
           name="TutorSpeaking"
           component={TutorSpeaking}
           options={{ title: "Speaking Session" }}
         />
-             <Stack.Screen
+        <Stack.Screen
           name="PremiumPage"
           component={Premium}
           options={{ title: "Premium" }}
+        />
+        <Stack.Screen
+          name="SampleTest"
+          component={SampleTest}
+          options={{ title: "Reading Test" }}
+        />
+        <Stack.Screen
+          name="About"
+          component={About}
+          options={{ title: "About GOielts" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -138,4 +151,3 @@ const styles = StyleSheet.create({
   },
 });
 export default App;
-

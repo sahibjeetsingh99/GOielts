@@ -17,6 +17,7 @@ import Writing from "./components/Writing";
 import SectionContentScreen from "./components/SectionContentScreen";
 import Premium from "./components/Premium";
 import SampleTest from "./components/SampleTest";
+import About from "./components/About";
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -103,6 +104,11 @@ const App = () => {
           name="SampleTest"
           component={SampleTest}
           options={{ title: "Reading Test" }}
+        />
+        <Stack.Screen
+          name="About"
+          component={About}
+          options={{ title: "About GOielts" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

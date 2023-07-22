@@ -156,6 +156,9 @@ export default function Settings() {
   const handleLeader = () => {
     navigation.navigate('LeaderBoard');
   };
+  const handleAbout = () => {
+    navigation.navigate('About');
+  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -221,6 +224,9 @@ export default function Settings() {
                           }
                           if (label === 'Leaderboard') {
                             handleLeader();
+                           }
+                           if (label === 'About GO-IELTS') {
+                            handleAbout();
                            }
                         }}
                       >

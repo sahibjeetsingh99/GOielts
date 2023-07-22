@@ -1,13 +1,10 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
-import CoursesPage from './CoursesPage';
 import Reading from './Reading';
 
   const HomePage = ({ navigation }) => {
-    const navigateToCourseDetails = (courseName) => {
-      navigation.navigate('CourseDetailsPage', { courseName });
-    };
+    
   
     const navigateToReading = (courseName) => {
       navigation.navigate('Reading', { courseName });
@@ -18,8 +15,13 @@ import Reading from './Reading';
     };
   
     const navigateToWriting = (courseName) => {
-      navigation.navigate('Writing', { courseName });
+      navigation.navigate('Writing', { courseName });  
     };
+
+    const navigateToSpeaking= (courseName) => {
+      navigation.navigate('Speaking', { courseName });
+    };
+  
  /* const SLIDER_WIDTH = Dimensions.get('window').width + 30;
   const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 
@@ -97,6 +99,7 @@ const data = [
           <Text style={styles.buttonText}>Speaking</Text>
         </TouchableOpacity>
         </ScrollView>
+
         <View style={styles.footerContainer}>
           <TouchableOpacity style={styles.footerButton}>
           <Icon name="home" size={20} color="#fff" style={styles.footerIcon} />

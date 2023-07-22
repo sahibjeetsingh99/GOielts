@@ -3,8 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomePage from "./components/HomePage";
 import Settings from "./components/Settings";
-import CoursesPage from "./components/CoursesPage";
-import CourseDetailsPage from "./components/CourseDetailsPage";
 import { StyleSheet } from "react-native";
 import StartPage from "./components/StartPage";
 import SignupPage from "./components/SignupPage";
@@ -17,6 +15,11 @@ import Reading from './components/Reading';
 import Listening from './components/Listening';
 import Writing from './components/Writing';
 import SectionContentScreen from './components/SectionContentScreen';
+import WritingData from './components/WritingData';
+import Speaking from './components/Speaking';
+import SpeakingData from './components/SpeakingData';
+import ListeningData from "./components/ListeningData";
+
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -59,16 +62,7 @@ const App = () => {
           component={LeaderboardPage}
           options={{ title: 'LeaderBoard' }}
         />
-        <Stack.Screen
-          name="Courses"
-          component={CoursesPage}
-          options={{ title: "CoursesPage" }}
-        />
-        <Stack.Screen
-          name="CourseDetailsPage"
-          component={CourseDetailsPage}
-          options={({ route }) => ({ title: route.params.courseName })}
-        />
+        
 
         <Stack.Screen
           name="Reading"
@@ -89,10 +83,31 @@ const App = () => {
         />
 
         <Stack.Screen
+          name="Speaking"
+          component={Speaking}
+          options={({ route }) => ({ title: route.params.courseName })}
+        />
+
+        <Stack.Screen
           name="SectionContentScreen"
           component={SectionContentScreen}
-          //options={{ title: 'Section Content' }}        />
           options={({ route }) => ({ title: 'Reading Passage' })} />
+
+         <Stack.Screen
+          name="WritingData"
+          component={WritingData}
+          options={({ route }) => ({ title: 'Writing' })} />
+          
+          <Stack.Screen
+          name="SpeakingData"
+          component={SpeakingData}
+          options={({ route }) => ({ title: 'Speaking' })} />
+
+          <Stack.Screen
+          name="ListeningData"
+          component={ListeningData}
+          options={({ route }) => ({ title: 'Listening' })} />
+
         <Stack.Screen
           name="NativeSpeaker"
           component={NativeSpeaker}

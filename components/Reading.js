@@ -5,11 +5,10 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { FontAwesome } from '@expo/vector-icons'; 
 import SectionContentScreen from './SectionContentScreen';
-// Initialize Firebase
+
 const firebaseConfig = {
-
-
   apiKey: "AIzaSyBr7vzz3cOG_nERnr_MWP-fACtx3EjpMbA",
   authDomain: "goielts-de65a.firebaseapp.com",
   databaseURL: "https://goielts-de65a-default-rtdb.firebaseio.com",
@@ -18,18 +17,6 @@ const firebaseConfig = {
   messagingSenderId: "569148549935",
   appId: "1:569148549935:web:ceb3c9b4eb4421d2ec0fda",
   measurementId: "G-NB9Z4VNGCF"
-
-/*
-apiKey: "AIzaSyA6LaXPq9AjINtew6zpIDjtJWnjAw6o82U",
-  authDomain: "goielts-f971d.firebaseapp.com",
-  projectId: "goielts-f971d",
-  storageBucket: "goielts-f971d.appspot.com",
-  messagingSenderId: "157569705591",
-  appId: "1:157569705591:web:951fef063b7712c22d4872",
-  
-  measurementId: "G-JZ7KGLZYDD"
-
-*/
 };
 
 if (!firebase.apps.length) {
@@ -75,10 +62,11 @@ if (!firebase.apps.length) {
   
       if (docSnapshot.exists) {
         const data = docSnapshot.data();
-        const sectionContent = data[firestoreField];
+         const sectionContent = data[firestoreField];
+
         setSectionContent(sectionContent);
         setSelectedSection(firestoreField);
-        navigateToSectionContent(sectionContent); // Pass the section content directly
+        navigateToSectionContent(sectionContent); 
       } else {
         console.log('ReadingPassage document does not exist.');
       }
@@ -92,7 +80,7 @@ if (!firebase.apps.length) {
   return (
     <View style={styles.container}>
       <View style={styles.header}></View>
-
+<View style={styles.practiceTestContainer}>
       <Text style={styles.practiceTestTitle}>Practice Test 1</Text>
     {PracticeTest1.map((section) => (
       <TouchableOpacity
@@ -103,7 +91,9 @@ if (!firebase.apps.length) {
         <Text style={styles.sectionName}>{section.name}</Text>
       </TouchableOpacity>
     ))}
+</View>
 
+<View style={styles.practiceTestContainer}>
 <Text style={styles.practiceTestTitle}>Practice Test 2</Text>
     {PracticeTest2.map((section) => (
       <TouchableOpacity
@@ -114,7 +104,8 @@ if (!firebase.apps.length) {
         <Text style={styles.sectionName}>{section.name}</Text>
       </TouchableOpacity>
     ))}
-  
+  </View>
+  <View style={styles.practiceTestContainer}>
   <Text style={styles.practiceTestTitle}>Practice Test 3</Text>
     {PracticeTest3.map((section) => (
       <TouchableOpacity
@@ -125,6 +116,19 @@ if (!firebase.apps.length) {
         <Text style={styles.sectionName}>{section.name}</Text>
       </TouchableOpacity>
     ))}
+</View>
+
+ {/* Additional locked practice test */}
+ <TouchableOpacity style={styles.sectionContainer} disabled>
+          <Text style={styles.sectionName}> Practice Test 4</Text>
+          <FontAwesome name="lock" size={22} color="red" />
+        </TouchableOpacity>
+
+<TouchableOpacity style={styles.sectionContainer} disabled>
+          <Text style={styles.sectionName}> Practice Test 5</Text>
+          <FontAwesome name="lock" size={22} color="red" />
+        </TouchableOpacity>
+
 
     </View>
   ); 
@@ -136,6 +140,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'flex-start',
       padding: 16,
+      backgroundColor: 'white',
     },
     headerContainer: {
       flexDirection: 'row',
@@ -158,31 +163,21 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       marginBottom: 16,
-      borderWidth: 1,
-      borderColor: 'black',
+      backgroundColor :'#9768D9',
     },
     sectionName: {
       flex: 1,
+      fontSize: 18,
+      fontWeight: 'normal',
+      color: 'black',
       marginRight: 8,
     },
-    progressBar: {
-      flex: 2,
-      height: 10,
-      backgroundColor: '#e0e0e0',
-      borderRadius: 5,
-    },
-    progress: {
-      height: '100%',
-      backgroundColor: '#9768D9',
-      borderRadius: 5,
-    },
-
     practiceTestContainer: {
+      width:'40%',
       marginBottom: 16,
       borderWidth: 1,
-      borderColor: 'black',
       backgroundColor: '#9768D9',
-      borderRadius: 20,
+      borderRadius: 10,
       padding: 16,
     },
     practiceTestTitle: {
@@ -191,6 +186,7 @@ const styles = StyleSheet.create({
       color: 'white',
       backgroundColor: '#9768D9',
       marginBottom: 8,
+      textAlign:'center',
     },
   });
 

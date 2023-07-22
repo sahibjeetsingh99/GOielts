@@ -1,19 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet,ScrollView  } from 'react-native';
+import { View, Text, StyleSheet,ScrollView,   } from 'react-native';
 
 const SectionContentScreen = ({ route }) => {
   const { sectionContent } = route.params;
+
+  const formattedsectionContent = sectionContent
+  .replace(/\\n/g, '\n')
+  .replace(/<br \/>/g, '\n\n');
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Reading Passage</Text>
+      <Text style={styles.title}> Passage</Text>
 
       <View style={styles.contentContainer}>
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <Text style={styles.sectionContent}>{sectionContent}</Text>
-        </ScrollView>
-      </View>
+       <ScrollView>
+       <Text style={styles.sectionContent} >{formattedsectionContent}</Text>
+   </ScrollView>
 
-    
+      </View>
     </View>
   );
 };
@@ -25,6 +29,7 @@ const styles = StyleSheet.create({
       padding: 16,
     },
     scrollContainer: {
+      flex:1,
         height: 200,
         width: '100%',
         padding: 16,
@@ -49,9 +54,11 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       marginBottom: 16,
       borderWidth: 2,
-      borderColor: 'black',
       whiteSpace: 'pre-line',
-
+ paddingHorizontal: 16,
+    paddingVertical: 8,
+    fontSize: 16,
+    lineHeight: 24,
     },
     sectionName: {
       flex: 1,
@@ -75,5 +82,3 @@ const styles = StyleSheet.create({
 
 
 export default SectionContentScreen;
-
-

@@ -16,6 +16,11 @@ import Listening from './components/Listening';
 import Writing from './components/Writing';
 import SectionContentScreen from './components/SectionContentScreen';
 import Premium from './components/Premium';
+import WritingData from './components/WritingData';
+import Speaking from './components/Speaking';
+import SpeakingData from './components/SpeakingData';
+import ListeningData from "./components/ListeningData";
+
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -58,6 +63,7 @@ const App = () => {
           component={LeaderboardPage}
           options={{ title: 'LeaderBoard' }}
         />
+        
 
         <Stack.Screen
           name="Reading"
@@ -78,10 +84,31 @@ const App = () => {
         />
 
         <Stack.Screen
+          name="Speaking"
+          component={Speaking}
+          options={({ route }) => ({ title: route.params.courseName })}
+        />
+
+        <Stack.Screen
           name="SectionContentScreen"
           component={SectionContentScreen}
-          //options={{ title: 'Section Content' }}        />
           options={({ route }) => ({ title: 'Reading Passage' })} />
+
+         <Stack.Screen
+          name="WritingData"
+          component={WritingData}
+          options={({ route }) => ({ title: 'Writing' })} />
+          
+          <Stack.Screen
+          name="SpeakingData"
+          component={SpeakingData}
+          options={({ route }) => ({ title: 'Speaking' })} />
+
+          <Stack.Screen
+          name="ListeningData"
+          component={ListeningData}
+          options={({ route }) => ({ title: 'Listening' })} />
+
         <Stack.Screen
           name="NativeSpeaker"
           component={NativeSpeaker}

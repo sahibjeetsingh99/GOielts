@@ -1,52 +1,143 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Writing = ({ route }) => {
-  const { courseName } = route.params;
 
-  // Sample data for Task 1 sections with completion values
-  const task1Sections = [
-    { name: 'Section 1', completed: 0.6 },
-    { name: 'Section 2', completed: 0.3 },
-    { name: 'Section 3', completed: 0.8 },
-  ];
+import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { View, Text, StyleSheet, TouchableOpacity,Image  } from 'react-native';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import WritingData from './WritingData';
+import { FontAwesome } from '@expo/vector-icons'; // Import the FontAwesome component
 
-  // Sample data for Task 2 sections with completion values
-  const task2Sections = [
-    { name: 'Section 1', completed: 0.4 },
-    { name: 'Section 2', completed: 0.7 },
-    { name: 'Section 3', completed: 0.5 },
-  ];
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Icon name="pencil" size={30} color="#FFFFFF" style={styles.icon} />
-        <Text style={styles.title}>Writing</Text>
-      </View>
+// Initialize Firebase
+const firebaseConfig = {
 
-      <Text style={styles.taskTitle}>Task 1</Text>
-      {task1Sections.map((section, index) => (
-        <View key={index} style={styles.sectionContainer}>
-          <Text style={styles.sectionName}>{section.name}</Text>
-          <View style={styles.progressBar}>
-            <View style={[styles.progress, { width: `${section.completed * 100}%` }]} />
-          </View>
-        </View>
-      ))}
 
-      <Text style={styles.taskTitle}>Task 2</Text>
-      {task2Sections.map((section, index) => (
-        <View key={index} style={styles.sectionContainer}>
-          <Text style={styles.sectionName}>{section.name}</Text>
-          <View style={styles.progressBar}>
-            <View style={[styles.progress, { width: `${section.completed * 100}%` }]} />
-          </View>
-        </View>
-      ))}
-    </View>
-  );
+  apiKey: "AIzaSyBr7vzz3cOG_nERnr_MWP-fACtx3EjpMbA",
+  authDomain: "goielts-de65a.firebaseapp.com",
+  databaseURL: "https://goielts-de65a-default-rtdb.firebaseio.com",
+  projectId: "goielts-de65a",
+  storageBucket: "goielts-de65a.appspot.com",
+  messagingSenderId: "569148549935",
+  appId: "1:569148549935:web:ceb3c9b4eb4421d2ec0fda",
+  measurementId: "G-NB9Z4VNGCF"
+
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app(); // if already initialized, use existing app
+}
+
+  const Writing = ({ route }) => {
+    const { courseName } = route.params;
+    const navigation = useNavigation();
+
+
+
+    const navigateToWritingData = (taskContent, imageFileName) => {
+      navigation.navigate('WritingData', { taskContent, imageFileName });
+    };
+  
+    const PracticeTest1 = [
+        { name: 'Task 1', firestoreField: 'Task1', imageFileName: 'Task1-1.png'  },
+        { name: 'Task 2', firestoreField: 'Task2', imageFileName: ''  },
+      ];
+    
+      const PracticeTest2 = [
+        { name: 'Task 1', firestoreField: 'Task3' , imageFileName: 'Task1-2.png' },
+        { name: 'Task 2', firestoreField: 'Task4',imageFileName: '' },
+      ];
+  
+    
+      const PracticeTest3 = [
+        { name: 'Task 1', firestoreField: 'Task5' ,imageFileName: 'Task1-3.png'},
+        { name: 'Task 2', firestoreField: 'Task6' ,imageFileName: ''},
+      ];
+
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [taskContent, setTaskContent] = useState(null);
+  
+
+  const handleSectionPress = async (firestoreField, imageFileName) => {
+    try {
+      const docRef = firebase.firestore().collection('Writing').doc('wdoc');
+      const docSnapshot = await docRef.get();
+
+      if (docSnapshot.exists) {
+        const data = docSnapshot.data();
+        const taskContent = data[firestoreField];
+        navigateToWritingData(taskContent, imageFileName);
+      } else {
+        console.log('Writing document does not exist.');
+      }
+    } catch (error) {
+      console.log('Error fetching section content:', error);
+    }
+  };
+
+
+
+
+return (
+  <View style={styles.container}>
+    <View style={styles.header}></View>
+    <View style={styles.practiceTestContainer}>
+
+    <Text style={styles.practiceTestTitle}>Practice Test 1</Text>
+    {PracticeTest1.map((section) => (
+      <TouchableOpacity
+        key={section.name}
+        style={styles.sectionContainer}
+        onPress={() => handleSectionPress(section.firestoreField, section.imageFileName)}
+      >
+        <Text style={styles.sectionName}>{section.name}</Text>
+      </TouchableOpacity>
+    ))}</View>
+
+<View style={styles.practiceTestContainer}>
+
+    <Text style={styles.practiceTestTitle}>Practice Test 2</Text>
+    {PracticeTest2.map((section) => (
+      <TouchableOpacity
+        key={section.name}
+        style={styles.sectionContainer}
+        onPress={() => handleSectionPress(section.firestoreField, section.imageFileName)}
+      >
+        <Text style={styles.sectionName}>{section.name}</Text>
+      </TouchableOpacity>
+    ))}</View>
+
+<View style={styles.practiceTestContainer}>
+
+    <Text style={styles.practiceTestTitle}>Practice Test 3</Text>
+    {PracticeTest3.map((section) => (
+      <TouchableOpacity
+        key={section.name}
+        style={styles.sectionContainer}
+        onPress={() => handleSectionPress(section.firestoreField, section.imageFileName)}
+      >
+        <Text style={styles.sectionName}>{section.name}</Text>
+      </TouchableOpacity>
+    ))}</View>
+
+    
+ {/* Additional locked practice test */}
+ <TouchableOpacity style={styles.sectionContainer} disabled>
+          <Text style={styles.sectionName}> Practice Test 4</Text>
+          <FontAwesome name="lock" size={20} color="red" />
+        </TouchableOpacity>
+
+ {/* Additional locked practice test */}
+ <TouchableOpacity style={styles.sectionContainer} disabled>
+          <Text style={styles.sectionName}> Practice Test 5</Text>
+          <FontAwesome name="lock" size={20} color="red" />
+        </TouchableOpacity>
+
+  </View>
+);
 };
 
 const styles = StyleSheet.create({
@@ -55,25 +146,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: 16,
+    backgroundColor: 'white',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 16,
-    color: '#FFFFFF',
-  },
-  sectionContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-    borderWidth: 1,
-    borderColor: 'black',
-  },
-  icon: {
-    marginRight: 10,
-  },
-  header: {
+  headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#9768D9',
@@ -82,26 +157,47 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 16,
   },
+  icon: {
+    marginRight: 10,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  sectionContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+    backgroundColor :'#9768D9',
+  },
   sectionName: {
     flex: 1,
+    fontSize: 18,
+    fontWeight: 'normal',
+    color: 'black',
     marginRight: 8,
   },
-  progressBar: {
-    flex: 2,
-    height: 10,
-    backgroundColor: '#e0e0e0',
-    borderRadius: 5,
-  },
-  progress: {
-    height: '100%',
+  practiceTestContainer: {
+    width:'40%',
+    marginBottom: 16,
+    borderWidth: 1,
     backgroundColor: '#9768D9',
-    borderRadius: 5,
+    borderRadius: 10,
+    padding: 16,
   },
-  taskTitle: {
-    fontSize: 20,
+  practiceTestTitle: {
+    fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 16,
+    color: 'white',
+    backgroundColor: '#9768D9',
+    marginBottom: 8,
+    textAlign:'center',
   },
 });
 
-export default Writing;
+
+
+  export default Writing;
+
+

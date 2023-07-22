@@ -103,7 +103,24 @@ if (!firebase.apps.length) {
         <Text style={styles.sectionName}>{section.name}</Text>
       </TouchableOpacity>
     ))}
-
+   <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 3</Text>
+      </TouchableOpacity>
 <Text style={styles.practiceTestTitle}>Practice Test 2</Text>
     {PracticeTest2.map((section) => (
       <TouchableOpacity
@@ -114,7 +131,24 @@ if (!firebase.apps.length) {
         <Text style={styles.sectionName}>{section.name}</Text>
       </TouchableOpacity>
     ))}
-  
+  <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 3</Text>
+      </TouchableOpacity>
   <Text style={styles.practiceTestTitle}>Practice Test 3</Text>
     {PracticeTest3.map((section) => (
       <TouchableOpacity
@@ -125,7 +159,24 @@ if (!firebase.apps.length) {
         <Text style={styles.sectionName}>{section.name}</Text>
       </TouchableOpacity>
     ))}
-
+   <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sectionContainer}
+        onPress={() => navigation.navigate('SampleTest')}
+      >
+        <Text style={styles.takeTestButtonText}>Take Test for Section 3</Text>
+      </TouchableOpacity>
     </View>
   ); 
 };
@@ -135,7 +186,8 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'flex-start',
-      padding: 16,
+      padding: 5,
+      minHeight: 1000,
     },
     headerContainer: {
       flexDirection: 'row',

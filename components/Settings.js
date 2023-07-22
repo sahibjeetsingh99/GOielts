@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -9,8 +9,10 @@ import {
   Image,
   Switch,
 } from 'react-native';
+import { getDatabase, ref, onValue } from 'firebase/database';
 import { useNavigation } from '@react-navigation/native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const SECTIONS = [
   {
@@ -83,7 +85,7 @@ const SECTIONS = [
     items: [
       { icon: 'facebook', color: '#9768d9', label: 'Connect with Friends', type: 'link' },
       { icon: 'check-circle', color: '#9768d9', label: 'Leaderboard', type: 'link' },
-      { icon: 'share-2', color: '#9768d9', label: 'Share Achievements', type: 'link' },
+      { icon: 'share-2', color: '#9768d9', label: 'Share', type: 'link' },
     ],
   },
   {
@@ -115,11 +117,44 @@ const SECTIONS = [
   },
 ];
 
-export default function Example() {
+export default function Settings() {
   const navigation = useNavigation();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
+  useEffect(() => {
+    // Get the Firebase Auth instance
+    const auth = getAuth();
+
+    // Listen for changes in the user's authentication state
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, fetch user data from Realtime Database
+        const database = getDatabase();
+        const userRef = ref(database, `users/${user.uid}`);
+        onValue(userRef, (snapshot) => {
+          const userData = snapshot.val();
+          if (userData) {
+            setFirstName(userData.firstName);
+            setLastName(userData.lastName);
+          }
+        });
+      } else {
+        // User is signed out, you can handle this case if needed
+      }
+    });
+
+    // Clean up the subscription when the component unmounts
+    return () => unsubscribe();
+  }, []);
   const handleLogout = () => {
     navigation.navigate('Start');
+  };
+  const handlePremium = () => {
+    navigation.navigate('PremiumPage');
+  };
+  const handleLeader = () => {
+    navigation.navigate('LeaderBoard');
   };
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -150,7 +185,7 @@ export default function Example() {
           </TouchableOpacity>
 
           <View style={styles.profileBody}>
-            <Text style={styles.profileName}>Suril Shukla</Text>
+            <Text style={styles.profileName}>{firstName} {lastName}</Text>
           </View>
         </View>
 
@@ -176,11 +211,17 @@ export default function Example() {
                     {type === 'boolean' && <Switch value={value} />}
 
                     {type === 'link' && (<TouchableOpacity
-                        onPress={() => {
+                        onPress={(navigation) => {
                           // handle onPress
                           if (label === 'Logout') {
                             handleLogout();
                           }
+                          if (label === 'Get Premium') {
+                           handlePremium();
+                          }
+                          if (label === 'Leaderboard') {
+                            handleLeader();
+                           }
                         }}
                       >
                       <FeatherIcon

@@ -24,6 +24,13 @@ const TutorHome = ({ navigation }) => {
           <Icon name="user" size={20} color="#fff" style={styles.icon} />
           <Text style={styles.buttonText}>Start Speaking Session</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.courseButton2}
+          onPress={() => navigation.navigate('TutorRemarks')}
+        >
+          <Icon name="pencil" size={20} color="#fff" style={styles.icon} />
+          <Text style={styles.buttonText}>Remarks</Text>
+        </TouchableOpacity>
       </ScrollView>
       <View style={styles.footerContainer}>
         <TouchableOpacity style={styles.footerButton} onPress={() => navigation.navigate('TutorHome')}>

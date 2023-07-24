@@ -67,7 +67,7 @@ const SECTIONS = [
   header: 'My Progress',
     icon: 'settings',
     items: [
-      { icon: 'truck', color: '#9768d9', label: 'Progress Tracking', type: 'link' },
+      { icon: 'truck', color: '#9768d9', label: 'Remarks', type: 'link' },
       { icon: 'bookmark', color: '#9768d9', label: 'Bookmarks', type: 'link' },
       {
         icon: 'bar-chart-2',
@@ -159,6 +159,9 @@ export default function Settings() {
   const handleAbout = () => {
     navigation.navigate('About');
   };
+  const handleRemarks = () => {
+    navigation.navigate('StudentRemarks');
+  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -227,6 +230,9 @@ export default function Settings() {
                            }
                            if (label === 'About GO-IELTS') {
                             handleAbout();
+                           }
+                           if (label === 'Remarks') {
+                            handleRemarks();
                            }
                         }}
                       >

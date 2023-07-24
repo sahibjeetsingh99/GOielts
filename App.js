@@ -22,6 +22,8 @@ import WritingData from './components/WritingData';
 import Speaking from './components/Speaking';
 import SpeakingData from './components/SpeakingData';
 import ListeningData from "./components/ListeningData";
+import TutorRemarks from "./components/TutorRemarks";
+import Remarks from "./components/Remarks";
 
 
 const Stack = createStackNavigator();
@@ -136,6 +138,16 @@ const App = () => {
           name="About"
           component={About}
           options={{ title: "About GOielts" }}
+        />
+      <Stack.Screen
+          name="TutorRemarks"
+          component={TutorRemarks}
+          options={{ title: "Add Remarks here" }}
+        />
+        <Stack.Screen
+          name="StudentRemarks"
+          component={Remarks}
+          options={{ title: "Remarks" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
